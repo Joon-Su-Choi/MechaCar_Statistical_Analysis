@@ -1,0 +1,44 @@
+# Deliverable 1
+
+# Load dplyr package
+library(dplyr)
+
+# Import and read the csv file as a dataframe
+MechaCar <- read.csv(file='Resources/MechaCar_mpg.csv',check.names=F,stringsAsFactors = F)
+
+# Perform a linear regression
+lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,data= MechaCar)
+
+# Get a summary to display the p-value and the r-squared value for the linear regression model
+summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,data= MechaCar))
+
+# Deliverable 2
+
+# Import and read the csv file as a dataframe
+SuspensionCoil <- read.csv(file='Resources/Suspension_Coil.csv',check.names=F,stringsAsFactors = F)
+
+# Create a total summary dataframe
+total_summary <- SuspensionCoil %>% summarize(Mean=mean(PSI),
+                                          Median=median(PSI),
+                                          Variance=var(PSI),
+                                          SD=sd(PSI),.groups = 'keep') 
+
+# Create a lot summary dataframe
+lot_summary <- SuspensionCoil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI),
+                                                                         Median=median(PSI),
+                                                                         Variance=var(PSI),
+                                                                         SD=sd(PSI),.groups = 'keep') 
+                                                                         
+# Deliverable 3
+
+# Use t.test function to determine if the PSI across all manufacturing lots is statistically different from the population mean of 1,500 pounds per square inch
+t.test(SuspensionCoil$PSI,mu=1500)
+  
+# Use t.test and subset arguement to determine if the PSI for each manufacturing lot is statistically different from the population mean of 1,500 pounds per square inch
+lot1 <- subset(SuspensionCoil, Manufacturing_Lot=="Lot1")
+lot2 <- subset(SuspensionCoil, Manufacturing_Lot=="Lot2")
+lot3 <- subset(SuspensionCoil, Manufacturing_Lot=="Lot3")
+
+t.test(lot1$PSI,mu=1500)
+t.test(lot2$PSI,mu=1500)
+t.test(lot3$PSI,mu=1500)

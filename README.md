@@ -38,7 +38,7 @@ The design specifications for the MechaCar suspension coils dictate that the var
 
 **All Lots**
 
-![mech_8](https://user-images.githubusercontent.com/95505596/162578139-899e1b0c-8543-4090-9a4f-bcd24d9f249e.png)
+![mech_8](https://user-images.githubusercontent.com/95505596/162580568-dd49e116-f9ff-43cc-9759-efd8f3d01e28.png)
 
 - The sample mean is 1498.78. The p-value of 0.06 is higher than the significance level of 0.05, which indicates that we fail to reject the null hypothesis.
 
